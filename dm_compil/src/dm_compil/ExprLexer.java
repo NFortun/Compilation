@@ -1,5 +1,7 @@
-// $ANTLR 3.5 ../../workspace/dm_compil/src/dm_compil/Expr.g 2016-09-20 12:32:22
 package dm_compil;
+
+// $ANTLR 3.5 Expr.g 2016-09-20 13:29:51
+
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
@@ -14,6 +16,8 @@ public class ExprLexer extends Lexer {
 	public static final int T__11=11;
 	public static final int T__12=12;
 	public static final int T__13=13;
+	public static final int T__14=14;
+	public static final int T__15=15;
 	public static final int ID=4;
 	public static final int INT=5;
 	public static final int NEWLINE=6;
@@ -32,15 +36,15 @@ public class ExprLexer extends Lexer {
 	public ExprLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "../../workspace/dm_compil/src/dm_compil/Expr.g"; }
+	@Override public String getGrammarFileName() { return "Expr.g"; }
 
 	// $ANTLR start "T__8"
 	public final void mT__8() throws RecognitionException {
 		try {
 			int _type = T__8;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:2:6: ( '(' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:2:8: '('
+			// Expr.g:2:6: ( '(' )
+			// Expr.g:2:8: '('
 			{
 			match('('); 
 			}
@@ -59,8 +63,8 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__9;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:3:6: ( ')' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:3:8: ')'
+			// Expr.g:3:6: ( ')' )
+			// Expr.g:3:8: ')'
 			{
 			match(')'); 
 			}
@@ -79,8 +83,8 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__10;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:4:7: ( '*' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:4:9: '*'
+			// Expr.g:4:7: ( '*' )
+			// Expr.g:4:9: '*'
 			{
 			match('*'); 
 			}
@@ -99,8 +103,8 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__11;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:5:7: ( '+' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:5:9: '+'
+			// Expr.g:5:7: ( '+' )
+			// Expr.g:5:9: '+'
 			{
 			match('+'); 
 			}
@@ -119,8 +123,8 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__12;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:6:7: ( '-' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:6:9: '-'
+			// Expr.g:6:7: ( '-' )
+			// Expr.g:6:9: '-'
 			{
 			match('-'); 
 			}
@@ -139,8 +143,8 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__13;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:7:7: ( '=' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:7:9: '='
+			// Expr.g:7:7: ( '=' )
+			// Expr.g:7:9: '='
 			{
 			match('='); 
 			}
@@ -154,15 +158,56 @@ public class ExprLexer extends Lexer {
 	}
 	// $ANTLR end "T__13"
 
+	// $ANTLR start "T__14"
+	public final void mT__14() throws RecognitionException {
+		try {
+			int _type = T__14;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// Expr.g:8:7: ( '^' )
+			// Expr.g:8:9: '^'
+			{
+			match('^'); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__14"
+
+	// $ANTLR start "T__15"
+	public final void mT__15() throws RecognitionException {
+		try {
+			int _type = T__15;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// Expr.g:9:7: ( 'div' )
+			// Expr.g:9:9: 'div'
+			{
+			match("div"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__15"
+
 	// $ANTLR start "ID"
 	public final void mID() throws RecognitionException {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:44:5: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:44:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
+			// Expr.g:54:5: ( ( 'a' .. 'z' | 'A' .. 'Z' )+ )
+			// Expr.g:54:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
 			{
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:44:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
+			// Expr.g:54:9: ( 'a' .. 'z' | 'A' .. 'Z' )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -174,7 +219,7 @@ public class ExprLexer extends Lexer {
 
 				switch (alt1) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:
+					// Expr.g:
 					{
 					if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 						input.consume();
@@ -211,10 +256,10 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = INT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:45:5: ( ( '0' .. '9' )+ )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:45:9: ( '0' .. '9' )+
+			// Expr.g:55:5: ( ( '0' .. '9' )+ )
+			// Expr.g:55:9: ( '0' .. '9' )+
 			{
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:45:9: ( '0' .. '9' )+
+			// Expr.g:55:9: ( '0' .. '9' )+
 			int cnt2=0;
 			loop2:
 			while (true) {
@@ -226,7 +271,7 @@ public class ExprLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:
+					// Expr.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -263,10 +308,10 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = NEWLINE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:46:8: ( ( '\\r' )? '\\n' )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:46:9: ( '\\r' )? '\\n'
+			// Expr.g:56:8: ( ( '\\r' )? '\\n' )
+			// Expr.g:56:9: ( '\\r' )? '\\n'
 			{
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:46:9: ( '\\r' )?
+			// Expr.g:56:9: ( '\\r' )?
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0=='\r') ) {
@@ -274,7 +319,7 @@ public class ExprLexer extends Lexer {
 			}
 			switch (alt3) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:46:9: '\\r'
+					// Expr.g:56:9: '\\r'
 					{
 					match('\r'); 
 					}
@@ -299,10 +344,10 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:47:5: ( ( ' ' | '\\t' )+ )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:47:9: ( ' ' | '\\t' )+
+			// Expr.g:57:5: ( ( ' ' | '\\t' )+ )
+			// Expr.g:57:9: ( ' ' | '\\t' )+
 			{
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:47:9: ( ' ' | '\\t' )+
+			// Expr.g:57:9: ( ' ' | '\\t' )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -314,7 +359,7 @@ public class ExprLexer extends Lexer {
 
 				switch (alt4) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:
+					// Expr.g:
 					{
 					if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
 						input.consume();
@@ -349,8 +394,8 @@ public class ExprLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | ID | INT | NEWLINE | WS )
-		int alt5=10;
+		// Expr.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | ID | INT | NEWLINE | WS )
+		int alt5=12;
 		switch ( input.LA(1) ) {
 		case '(':
 			{
@@ -382,6 +427,40 @@ public class ExprLexer extends Lexer {
 			alt5=6;
 			}
 			break;
+		case '^':
+			{
+			alt5=7;
+			}
+			break;
+		case 'd':
+			{
+			int LA5_8 = input.LA(2);
+			if ( (LA5_8=='i') ) {
+				int LA5_13 = input.LA(3);
+				if ( (LA5_13=='v') ) {
+					int LA5_14 = input.LA(4);
+					if ( ((LA5_14 >= 'A' && LA5_14 <= 'Z')||(LA5_14 >= 'a' && LA5_14 <= 'z')) ) {
+						alt5=9;
+					}
+
+					else {
+						alt5=8;
+					}
+
+				}
+
+				else {
+					alt5=9;
+				}
+
+			}
+
+			else {
+				alt5=9;
+			}
+
+			}
+			break;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -411,7 +490,6 @@ public class ExprLexer extends Lexer {
 		case 'a':
 		case 'b':
 		case 'c':
-		case 'd':
 		case 'e':
 		case 'f':
 		case 'g':
@@ -435,7 +513,7 @@ public class ExprLexer extends Lexer {
 		case 'y':
 		case 'z':
 			{
-			alt5=7;
+			alt5=9;
 			}
 			break;
 		case '0':
@@ -449,19 +527,19 @@ public class ExprLexer extends Lexer {
 		case '8':
 		case '9':
 			{
-			alt5=8;
+			alt5=10;
 			}
 			break;
 		case '\n':
 		case '\r':
 			{
-			alt5=9;
+			alt5=11;
 			}
 			break;
 		case '\t':
 		case ' ':
 			{
-			alt5=10;
+			alt5=12;
 			}
 			break;
 		default:
@@ -471,70 +549,84 @@ public class ExprLexer extends Lexer {
 		}
 		switch (alt5) {
 			case 1 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:10: T__8
+				// Expr.g:1:10: T__8
 				{
 				mT__8(); 
 
 				}
 				break;
 			case 2 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:15: T__9
+				// Expr.g:1:15: T__9
 				{
 				mT__9(); 
 
 				}
 				break;
 			case 3 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:20: T__10
+				// Expr.g:1:20: T__10
 				{
 				mT__10(); 
 
 				}
 				break;
 			case 4 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:26: T__11
+				// Expr.g:1:26: T__11
 				{
 				mT__11(); 
 
 				}
 				break;
 			case 5 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:32: T__12
+				// Expr.g:1:32: T__12
 				{
 				mT__12(); 
 
 				}
 				break;
 			case 6 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:38: T__13
+				// Expr.g:1:38: T__13
 				{
 				mT__13(); 
 
 				}
 				break;
 			case 7 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:44: ID
+				// Expr.g:1:44: T__14
+				{
+				mT__14(); 
+
+				}
+				break;
+			case 8 :
+				// Expr.g:1:50: T__15
+				{
+				mT__15(); 
+
+				}
+				break;
+			case 9 :
+				// Expr.g:1:56: ID
 				{
 				mID(); 
 
 				}
 				break;
-			case 8 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:47: INT
+			case 10 :
+				// Expr.g:1:59: INT
 				{
 				mINT(); 
 
 				}
 				break;
-			case 9 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:51: NEWLINE
+			case 11 :
+				// Expr.g:1:63: NEWLINE
 				{
 				mNEWLINE(); 
 
 				}
 				break;
-			case 10 :
-				// ../../workspace/dm_compil/src/dm_compil/Expr.g:1:59: WS
+			case 12 :
+				// Expr.g:1:71: WS
 				{
 				mWS(); 
 

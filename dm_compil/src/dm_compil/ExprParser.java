@@ -1,5 +1,7 @@
-// $ANTLR 3.5 ../../workspace/dm_compil/src/dm_compil/Expr.g 2016-09-20 12:32:22
 package dm_compil;
+
+// $ANTLR 3.5 Expr.g 2016-09-20 13:29:51
+
 import java.util.HashMap;
 
 
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 public class ExprParser extends Parser {
 	public static final String[] tokenNames = new String[] {
 		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "INT", "NEWLINE", "WS", 
-		"'('", "')'", "'*'", "'+'", "'-'", "'='"
+		"'('", "')'", "'*'", "'+'", "'-'", "'='", "'^'", "'div'"
 	};
 	public static final int EOF=-1;
 	public static final int T__8=8;
@@ -21,6 +23,8 @@ public class ExprParser extends Parser {
 	public static final int T__11=11;
 	public static final int T__12=12;
 	public static final int T__13=13;
+	public static final int T__14=14;
+	public static final int T__15=15;
 	public static final int ID=4;
 	public static final int INT=5;
 	public static final int NEWLINE=6;
@@ -42,7 +46,7 @@ public class ExprParser extends Parser {
 	}
 
 	@Override public String[] getTokenNames() { return ExprParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "../../workspace/dm_compil/src/dm_compil/Expr.g"; }
+	@Override public String getGrammarFileName() { return "Expr.g"; }
 
 
 	/** Map variable name to Integer object holding value */
@@ -51,13 +55,13 @@ public class ExprParser extends Parser {
 
 
 	// $ANTLR start "prog"
-	// ../../workspace/dm_compil/src/dm_compil/Expr.g:14:1: prog : ( stat )+ ;
+	// Expr.g:14:1: prog : ( stat )+ ;
 	public final void prog() throws RecognitionException {
 		try {
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:14:5: ( ( stat )+ )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:14:9: ( stat )+
+			// Expr.g:14:5: ( ( stat )+ )
+			// Expr.g:14:9: ( stat )+
 			{
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:14:9: ( stat )+
+			// Expr.g:14:9: ( stat )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -69,7 +73,7 @@ public class ExprParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:14:9: stat
+					// Expr.g:14:9: stat
 					{
 					pushFollow(FOLLOW_stat_in_prog25);
 					stat();
@@ -102,14 +106,14 @@ public class ExprParser extends Parser {
 
 
 	// $ANTLR start "stat"
-	// ../../workspace/dm_compil/src/dm_compil/Expr.g:16:1: stat : ( expr NEWLINE | ID '=' expr NEWLINE | NEWLINE );
+	// Expr.g:16:1: stat : ( expr NEWLINE | ID '=' expr NEWLINE | NEWLINE );
 	public final void stat() throws RecognitionException {
 		Token ID2=null;
 		int expr1 =0;
 		int expr3 =0;
 
 		try {
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:16:5: ( expr NEWLINE | ID '=' expr NEWLINE | NEWLINE )
+			// Expr.g:16:5: ( expr NEWLINE | ID '=' expr NEWLINE | NEWLINE )
 			int alt2=3;
 			switch ( input.LA(1) ) {
 			case INT:
@@ -124,7 +128,7 @@ public class ExprParser extends Parser {
 				if ( (LA2_2==13) ) {
 					alt2=2;
 				}
-				else if ( (LA2_2==NEWLINE||(LA2_2 >= 10 && LA2_2 <= 12)) ) {
+				else if ( (LA2_2==NEWLINE||(LA2_2 >= 10 && LA2_2 <= 12)||(LA2_2 >= 14 && LA2_2 <= 15)) ) {
 					alt2=1;
 				}
 
@@ -154,7 +158,7 @@ public class ExprParser extends Parser {
 			}
 			switch (alt2) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:16:9: expr NEWLINE
+					// Expr.g:16:9: expr NEWLINE
 					{
 					pushFollow(FOLLOW_expr_in_stat52);
 					expr1=expr();
@@ -165,7 +169,7 @@ public class ExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:17:9: ID '=' expr NEWLINE
+					// Expr.g:17:9: ID '=' expr NEWLINE
 					{
 					ID2=(Token)match(input,ID,FOLLOW_ID_in_stat66); 
 					match(input,13,FOLLOW_13_in_stat68); 
@@ -178,7 +182,7 @@ public class ExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:19:9: NEWLINE
+					// Expr.g:19:9: NEWLINE
 					{
 					match(input,NEWLINE,FOLLOW_NEWLINE_in_stat92); 
 					}
@@ -199,7 +203,7 @@ public class ExprParser extends Parser {
 
 
 	// $ANTLR start "expr"
-	// ../../workspace/dm_compil/src/dm_compil/Expr.g:22:1: expr returns [int value] : e= multExpr ( '+' e= multExpr | '-' e= multExpr )* ;
+	// Expr.g:22:1: expr returns [int value] : e= multExpr ( '+' e= multExpr | '-' e= multExpr )* ;
 	public final int expr() throws RecognitionException {
 		int value = 0;
 
@@ -207,15 +211,15 @@ public class ExprParser extends Parser {
 		int e =0;
 
 		try {
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:23:5: (e= multExpr ( '+' e= multExpr | '-' e= multExpr )* )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:23:9: e= multExpr ( '+' e= multExpr | '-' e= multExpr )*
+			// Expr.g:23:5: (e= multExpr ( '+' e= multExpr | '-' e= multExpr )* )
+			// Expr.g:23:9: e= multExpr ( '+' e= multExpr | '-' e= multExpr )*
 			{
 			pushFollow(FOLLOW_multExpr_in_expr117);
 			e=multExpr();
 			state._fsp--;
 
 			value = e;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:24:9: ( '+' e= multExpr | '-' e= multExpr )*
+			// Expr.g:24:9: ( '+' e= multExpr | '-' e= multExpr )*
 			loop3:
 			while (true) {
 				int alt3=3;
@@ -229,7 +233,7 @@ public class ExprParser extends Parser {
 
 				switch (alt3) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:24:13: '+' e= multExpr
+					// Expr.g:24:13: '+' e= multExpr
 					{
 					match(input,11,FOLLOW_11_in_expr133); 
 					pushFollow(FOLLOW_multExpr_in_expr137);
@@ -240,7 +244,7 @@ public class ExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:25:13: '-' e= multExpr
+					// Expr.g:25:13: '-' e= multExpr
 					{
 					match(input,12,FOLLOW_12_in_expr153); 
 					pushFollow(FOLLOW_multExpr_in_expr157);
@@ -272,8 +276,62 @@ public class ExprParser extends Parser {
 
 
 
+	// $ANTLR start "squaExpr"
+	// Expr.g:29:1: squaExpr returns [int value] : e= atom ( '^' e= atom )? ;
+	public final int squaExpr() throws RecognitionException {
+		int value = 0;
+
+
+		int e =0;
+
+		try {
+			// Expr.g:30:2: (e= atom ( '^' e= atom )? )
+			// Expr.g:30:6: e= atom ( '^' e= atom )?
+			{
+			pushFollow(FOLLOW_atom_in_squaExpr192);
+			e=atom();
+			state._fsp--;
+
+			value = e;
+			// Expr.g:31:3: ( '^' e= atom )?
+			int alt4=2;
+			int LA4_0 = input.LA(1);
+			if ( (LA4_0==14) ) {
+				alt4=1;
+			}
+			switch (alt4) {
+				case 1 :
+					// Expr.g:32:4: '^' e= atom
+					{
+					match(input,14,FOLLOW_14_in_squaExpr204); 
+					pushFollow(FOLLOW_atom_in_squaExpr208);
+					e=atom();
+					state._fsp--;
+
+					 value =(int)Math.pow((double)value,(double) e);
+					}
+					break;
+
+			}
+
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return value;
+	}
+	// $ANTLR end "squaExpr"
+
+
+
 	// $ANTLR start "multExpr"
-	// ../../workspace/dm_compil/src/dm_compil/Expr.g:29:1: multExpr returns [int value] : e= atom ( '*' e= atom )* ;
+	// Expr.g:36:1: multExpr returns [int value] : e= squaExpr ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )* ;
 	public final int multExpr() throws RecognitionException {
 		int value = 0;
 
@@ -281,38 +339,62 @@ public class ExprParser extends Parser {
 		int e =0;
 
 		try {
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:30:5: (e= atom ( '*' e= atom )* )
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:30:9: e= atom ( '*' e= atom )*
+			// Expr.g:37:5: (e= squaExpr ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )* )
+			// Expr.g:37:9: e= squaExpr ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )*
 			{
-			pushFollow(FOLLOW_atom_in_multExpr195);
-			e=atom();
+			pushFollow(FOLLOW_squaExpr_in_multExpr239);
+			e=squaExpr();
 			state._fsp--;
 
 			value = e;
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:30:37: ( '*' e= atom )*
-			loop4:
+			// Expr.g:38:5: ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )*
+			loop5:
 			while (true) {
-				int alt4=2;
-				int LA4_0 = input.LA(1);
-				if ( (LA4_0==10) ) {
-					alt4=1;
+				int alt5=3;
+				int LA5_0 = input.LA(1);
+				if ( (LA5_0==10) ) {
+					alt5=1;
+				}
+				else if ( (LA5_0==15) ) {
+					alt5=2;
 				}
 
-				switch (alt4) {
+				switch (alt5) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:30:38: '*' e= atom
+					// Expr.g:38:9: ( '*' e= squaExpr )
 					{
-					match(input,10,FOLLOW_10_in_multExpr200); 
-					pushFollow(FOLLOW_atom_in_multExpr204);
-					e=atom();
+					// Expr.g:38:9: ( '*' e= squaExpr )
+					// Expr.g:38:10: '*' e= squaExpr
+					{
+					match(input,10,FOLLOW_10_in_multExpr253); 
+					pushFollow(FOLLOW_squaExpr_in_multExpr257);
+					e=squaExpr();
 					state._fsp--;
 
 					value *= e;
 					}
+
+					}
+					break;
+				case 2 :
+					// Expr.g:39:8: ( 'div' e= squaExpr )
+					{
+					// Expr.g:39:8: ( 'div' e= squaExpr )
+					// Expr.g:39:9: 'div' e= squaExpr
+					{
+					match(input,15,FOLLOW_15_in_multExpr270); 
+					pushFollow(FOLLOW_squaExpr_in_multExpr274);
+					e=squaExpr();
+					state._fsp--;
+
+					value = value / e;
+					}
+
+					}
 					break;
 
 				default :
-					break loop4;
+					break loop5;
 				}
 			}
 
@@ -333,7 +415,7 @@ public class ExprParser extends Parser {
 
 
 	// $ANTLR start "atom"
-	// ../../workspace/dm_compil/src/dm_compil/Expr.g:33:1: atom returns [int value] : ( INT | ID | '(' expr ')' );
+	// Expr.g:43:1: atom returns [int value] : ( INT | ID | '(' expr ')' );
 	public final int atom() throws RecognitionException {
 		int value = 0;
 
@@ -343,41 +425,41 @@ public class ExprParser extends Parser {
 		int expr6 =0;
 
 		try {
-			// ../../workspace/dm_compil/src/dm_compil/Expr.g:34:5: ( INT | ID | '(' expr ')' )
-			int alt5=3;
+			// Expr.g:44:5: ( INT | ID | '(' expr ')' )
+			int alt6=3;
 			switch ( input.LA(1) ) {
 			case INT:
 				{
-				alt5=1;
+				alt6=1;
 				}
 				break;
 			case ID:
 				{
-				alt5=2;
+				alt6=2;
 				}
 				break;
 			case 8:
 				{
-				alt5=3;
+				alt6=3;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 5, 0, input);
+					new NoViableAltException("", 6, 0, input);
 				throw nvae;
 			}
-			switch (alt5) {
+			switch (alt6) {
 				case 1 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:34:9: INT
+					// Expr.g:44:9: INT
 					{
-					INT4=(Token)match(input,INT,FOLLOW_INT_in_atom232); 
+					INT4=(Token)match(input,INT,FOLLOW_INT_in_atom308); 
 					value = Integer.parseInt((INT4!=null?INT4.getText():null));
 					}
 					break;
 				case 2 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:35:9: ID
+					// Expr.g:45:9: ID
 					{
-					ID5=(Token)match(input,ID,FOLLOW_ID_in_atom244); 
+					ID5=(Token)match(input,ID,FOLLOW_ID_in_atom320); 
 
 					        Integer v = (Integer)memory.get((ID5!=null?ID5.getText():null));
 					        if ( v!=null ) value = v.intValue();
@@ -386,14 +468,14 @@ public class ExprParser extends Parser {
 					}
 					break;
 				case 3 :
-					// ../../workspace/dm_compil/src/dm_compil/Expr.g:41:9: '(' expr ')'
+					// Expr.g:51:9: '(' expr ')'
 					{
-					match(input,8,FOLLOW_8_in_atom264); 
-					pushFollow(FOLLOW_expr_in_atom266);
+					match(input,8,FOLLOW_8_in_atom340); 
+					pushFollow(FOLLOW_expr_in_atom342);
 					expr6=expr();
 					state._fsp--;
 
-					match(input,9,FOLLOW_9_in_atom268); 
+					match(input,9,FOLLOW_9_in_atom344); 
 					value = expr6;
 					}
 					break;
@@ -428,12 +510,17 @@ public class ExprParser extends Parser {
 	public static final BitSet FOLLOW_multExpr_in_expr137 = new BitSet(new long[]{0x0000000000001802L});
 	public static final BitSet FOLLOW_12_in_expr153 = new BitSet(new long[]{0x0000000000000130L});
 	public static final BitSet FOLLOW_multExpr_in_expr157 = new BitSet(new long[]{0x0000000000001802L});
-	public static final BitSet FOLLOW_atom_in_multExpr195 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_10_in_multExpr200 = new BitSet(new long[]{0x0000000000000130L});
-	public static final BitSet FOLLOW_atom_in_multExpr204 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_INT_in_atom232 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_atom244 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_8_in_atom264 = new BitSet(new long[]{0x0000000000000130L});
-	public static final BitSet FOLLOW_expr_in_atom266 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_9_in_atom268 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_atom_in_squaExpr192 = new BitSet(new long[]{0x0000000000004002L});
+	public static final BitSet FOLLOW_14_in_squaExpr204 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_atom_in_squaExpr208 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_squaExpr_in_multExpr239 = new BitSet(new long[]{0x0000000000008402L});
+	public static final BitSet FOLLOW_10_in_multExpr253 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_squaExpr_in_multExpr257 = new BitSet(new long[]{0x0000000000008402L});
+	public static final BitSet FOLLOW_15_in_multExpr270 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_squaExpr_in_multExpr274 = new BitSet(new long[]{0x0000000000008402L});
+	public static final BitSet FOLLOW_INT_in_atom308 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_atom320 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_8_in_atom340 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_expr_in_atom342 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_9_in_atom344 = new BitSet(new long[]{0x0000000000000002L});
 }

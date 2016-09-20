@@ -26,8 +26,18 @@ expr returns [int value]
         )*
     ;
 
+squaExpr returns [int value]
+	:   e=atom {$value = $e.value;}
+		( 
+			'^' e=atom { $value =(int)Math.pow((double)$value,(double) $e.value);}
+		)? 
+	;
+	
 multExpr returns [int value]
-    :   e=atom {$value = $e.value;} ('*' e=atom {$value *= $e.value;})*
+    :   e=squaExpr {$value = $e.value;} 
+    (  	('*' e=squaExpr {$value *= $e.value;})
+    	| ('div' e=squaExpr {$value = $value / $e.value;})
+    )*
     ; 
 
 atom returns [int value]
