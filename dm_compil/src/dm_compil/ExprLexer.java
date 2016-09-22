@@ -1,6 +1,6 @@
 package dm_compil;
 
-// $ANTLR 3.5 Expr.g 2016-09-20 13:29:51
+// $ANTLR 3.5 Expr.g 2016-09-22 13:37:13
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -143,10 +143,10 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__13;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// Expr.g:7:7: ( '=' )
-			// Expr.g:7:9: '='
+			// Expr.g:7:7: ( '/' )
+			// Expr.g:7:9: '/'
 			{
-			match('='); 
+			match('/'); 
 			}
 
 			state.type = _type;
@@ -163,10 +163,10 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__14;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// Expr.g:8:7: ( '^' )
-			// Expr.g:8:9: '^'
+			// Expr.g:8:7: ( '=' )
+			// Expr.g:8:9: '='
 			{
-			match('^'); 
+			match('='); 
 			}
 
 			state.type = _type;
@@ -183,11 +183,10 @@ public class ExprLexer extends Lexer {
 		try {
 			int _type = T__15;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// Expr.g:9:7: ( 'div' )
-			// Expr.g:9:9: 'div'
+			// Expr.g:9:7: ( '^' )
+			// Expr.g:9:9: '^'
 			{
-			match("div"); 
-
+			match('^'); 
 			}
 
 			state.type = _type;
@@ -422,43 +421,19 @@ public class ExprLexer extends Lexer {
 			alt5=5;
 			}
 			break;
-		case '=':
+		case '/':
 			{
 			alt5=6;
 			}
 			break;
-		case '^':
+		case '=':
 			{
 			alt5=7;
 			}
 			break;
-		case 'd':
+		case '^':
 			{
-			int LA5_8 = input.LA(2);
-			if ( (LA5_8=='i') ) {
-				int LA5_13 = input.LA(3);
-				if ( (LA5_13=='v') ) {
-					int LA5_14 = input.LA(4);
-					if ( ((LA5_14 >= 'A' && LA5_14 <= 'Z')||(LA5_14 >= 'a' && LA5_14 <= 'z')) ) {
-						alt5=9;
-					}
-
-					else {
-						alt5=8;
-					}
-
-				}
-
-				else {
-					alt5=9;
-				}
-
-			}
-
-			else {
-				alt5=9;
-			}
-
+			alt5=8;
 			}
 			break;
 		case 'A':
@@ -490,6 +465,7 @@ public class ExprLexer extends Lexer {
 		case 'a':
 		case 'b':
 		case 'c':
+		case 'd':
 		case 'e':
 		case 'f':
 		case 'g':

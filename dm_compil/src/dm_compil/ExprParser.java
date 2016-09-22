@@ -1,6 +1,6 @@
 package dm_compil;
 
-// $ANTLR 3.5 Expr.g 2016-09-20 13:29:51
+// $ANTLR 3.5 Expr.g 2016-09-22 13:37:13
 
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ExprParser extends Parser {
 	public static final String[] tokenNames = new String[] {
 		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "INT", "NEWLINE", "WS", 
-		"'('", "')'", "'*'", "'+'", "'-'", "'='", "'^'", "'div'"
+		"'('", "')'", "'*'", "'+'", "'-'", "'/'", "'='", "'^'"
 	};
 	public static final int EOF=-1;
 	public static final int T__8=8;
@@ -125,10 +125,10 @@ public class ExprParser extends Parser {
 			case ID:
 				{
 				int LA2_2 = input.LA(2);
-				if ( (LA2_2==13) ) {
+				if ( (LA2_2==14) ) {
 					alt2=2;
 				}
-				else if ( (LA2_2==NEWLINE||(LA2_2 >= 10 && LA2_2 <= 12)||(LA2_2 >= 14 && LA2_2 <= 15)) ) {
+				else if ( (LA2_2==NEWLINE||(LA2_2 >= 10 && LA2_2 <= 13)||LA2_2==15) ) {
 					alt2=1;
 				}
 
@@ -172,7 +172,7 @@ public class ExprParser extends Parser {
 					// Expr.g:17:9: ID '=' expr NEWLINE
 					{
 					ID2=(Token)match(input,ID,FOLLOW_ID_in_stat66); 
-					match(input,13,FOLLOW_13_in_stat68); 
+					match(input,14,FOLLOW_14_in_stat68); 
 					pushFollow(FOLLOW_expr_in_stat70);
 					expr3=expr();
 					state._fsp--;
@@ -277,7 +277,7 @@ public class ExprParser extends Parser {
 
 
 	// $ANTLR start "squaExpr"
-	// Expr.g:29:1: squaExpr returns [int value] : e= atom ( '^' e= atom )? ;
+	// Expr.g:29:1: squaExpr returns [int value] : e= atom ( '^' e= expr )* ;
 	public final int squaExpr() throws RecognitionException {
 		int value = 0;
 
@@ -285,33 +285,39 @@ public class ExprParser extends Parser {
 		int e =0;
 
 		try {
-			// Expr.g:30:2: (e= atom ( '^' e= atom )? )
-			// Expr.g:30:6: e= atom ( '^' e= atom )?
+			// Expr.g:30:2: (e= atom ( '^' e= expr )* )
+			// Expr.g:30:6: e= atom ( '^' e= expr )*
 			{
 			pushFollow(FOLLOW_atom_in_squaExpr192);
 			e=atom();
 			state._fsp--;
 
 			value = e;
-			// Expr.g:31:3: ( '^' e= atom )?
-			int alt4=2;
-			int LA4_0 = input.LA(1);
-			if ( (LA4_0==14) ) {
-				alt4=1;
-			}
-			switch (alt4) {
+			// Expr.g:31:3: ( '^' e= expr )*
+			loop4:
+			while (true) {
+				int alt4=2;
+				int LA4_0 = input.LA(1);
+				if ( (LA4_0==15) ) {
+					alt4=1;
+				}
+
+				switch (alt4) {
 				case 1 :
-					// Expr.g:32:4: '^' e= atom
+					// Expr.g:32:4: '^' e= expr
 					{
-					match(input,14,FOLLOW_14_in_squaExpr204); 
-					pushFollow(FOLLOW_atom_in_squaExpr208);
-					e=atom();
+					match(input,15,FOLLOW_15_in_squaExpr204); 
+					pushFollow(FOLLOW_expr_in_squaExpr208);
+					e=expr();
 					state._fsp--;
 
 					 value =(int)Math.pow((double)value,(double) e);
 					}
 					break;
 
+				default :
+					break loop4;
+				}
 			}
 
 			}
@@ -331,7 +337,7 @@ public class ExprParser extends Parser {
 
 
 	// $ANTLR start "multExpr"
-	// Expr.g:36:1: multExpr returns [int value] : e= squaExpr ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )* ;
+	// Expr.g:36:1: multExpr returns [int value] : e= squaExpr ( ( '*' e= squaExpr ) | ( '/' e= squaExpr ) )* ;
 	public final int multExpr() throws RecognitionException {
 		int value = 0;
 
@@ -339,15 +345,15 @@ public class ExprParser extends Parser {
 		int e =0;
 
 		try {
-			// Expr.g:37:5: (e= squaExpr ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )* )
-			// Expr.g:37:9: e= squaExpr ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )*
+			// Expr.g:37:5: (e= squaExpr ( ( '*' e= squaExpr ) | ( '/' e= squaExpr ) )* )
+			// Expr.g:37:9: e= squaExpr ( ( '*' e= squaExpr ) | ( '/' e= squaExpr ) )*
 			{
 			pushFollow(FOLLOW_squaExpr_in_multExpr239);
 			e=squaExpr();
 			state._fsp--;
 
 			value = e;
-			// Expr.g:38:5: ( ( '*' e= squaExpr ) | ( 'div' e= squaExpr ) )*
+			// Expr.g:38:5: ( ( '*' e= squaExpr ) | ( '/' e= squaExpr ) )*
 			loop5:
 			while (true) {
 				int alt5=3;
@@ -355,7 +361,7 @@ public class ExprParser extends Parser {
 				if ( (LA5_0==10) ) {
 					alt5=1;
 				}
-				else if ( (LA5_0==15) ) {
+				else if ( (LA5_0==13) ) {
 					alt5=2;
 				}
 
@@ -377,12 +383,12 @@ public class ExprParser extends Parser {
 					}
 					break;
 				case 2 :
-					// Expr.g:39:8: ( 'div' e= squaExpr )
+					// Expr.g:39:8: ( '/' e= squaExpr )
 					{
-					// Expr.g:39:8: ( 'div' e= squaExpr )
-					// Expr.g:39:9: 'div' e= squaExpr
+					// Expr.g:39:8: ( '/' e= squaExpr )
+					// Expr.g:39:9: '/' e= squaExpr
 					{
-					match(input,15,FOLLOW_15_in_multExpr270); 
+					match(input,13,FOLLOW_13_in_multExpr270); 
 					pushFollow(FOLLOW_squaExpr_in_multExpr274);
 					e=squaExpr();
 					state._fsp--;
@@ -500,8 +506,8 @@ public class ExprParser extends Parser {
 	public static final BitSet FOLLOW_stat_in_prog25 = new BitSet(new long[]{0x0000000000000172L});
 	public static final BitSet FOLLOW_expr_in_stat52 = new BitSet(new long[]{0x0000000000000040L});
 	public static final BitSet FOLLOW_NEWLINE_in_stat54 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_stat66 = new BitSet(new long[]{0x0000000000002000L});
-	public static final BitSet FOLLOW_13_in_stat68 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_ID_in_stat66 = new BitSet(new long[]{0x0000000000004000L});
+	public static final BitSet FOLLOW_14_in_stat68 = new BitSet(new long[]{0x0000000000000130L});
 	public static final BitSet FOLLOW_expr_in_stat70 = new BitSet(new long[]{0x0000000000000040L});
 	public static final BitSet FOLLOW_NEWLINE_in_stat72 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_NEWLINE_in_stat92 = new BitSet(new long[]{0x0000000000000002L});
@@ -510,14 +516,14 @@ public class ExprParser extends Parser {
 	public static final BitSet FOLLOW_multExpr_in_expr137 = new BitSet(new long[]{0x0000000000001802L});
 	public static final BitSet FOLLOW_12_in_expr153 = new BitSet(new long[]{0x0000000000000130L});
 	public static final BitSet FOLLOW_multExpr_in_expr157 = new BitSet(new long[]{0x0000000000001802L});
-	public static final BitSet FOLLOW_atom_in_squaExpr192 = new BitSet(new long[]{0x0000000000004002L});
-	public static final BitSet FOLLOW_14_in_squaExpr204 = new BitSet(new long[]{0x0000000000000130L});
-	public static final BitSet FOLLOW_atom_in_squaExpr208 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_squaExpr_in_multExpr239 = new BitSet(new long[]{0x0000000000008402L});
+	public static final BitSet FOLLOW_atom_in_squaExpr192 = new BitSet(new long[]{0x0000000000008002L});
+	public static final BitSet FOLLOW_15_in_squaExpr204 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_expr_in_squaExpr208 = new BitSet(new long[]{0x0000000000008002L});
+	public static final BitSet FOLLOW_squaExpr_in_multExpr239 = new BitSet(new long[]{0x0000000000002402L});
 	public static final BitSet FOLLOW_10_in_multExpr253 = new BitSet(new long[]{0x0000000000000130L});
-	public static final BitSet FOLLOW_squaExpr_in_multExpr257 = new BitSet(new long[]{0x0000000000008402L});
-	public static final BitSet FOLLOW_15_in_multExpr270 = new BitSet(new long[]{0x0000000000000130L});
-	public static final BitSet FOLLOW_squaExpr_in_multExpr274 = new BitSet(new long[]{0x0000000000008402L});
+	public static final BitSet FOLLOW_squaExpr_in_multExpr257 = new BitSet(new long[]{0x0000000000002402L});
+	public static final BitSet FOLLOW_13_in_multExpr270 = new BitSet(new long[]{0x0000000000000130L});
+	public static final BitSet FOLLOW_squaExpr_in_multExpr274 = new BitSet(new long[]{0x0000000000002402L});
 	public static final BitSet FOLLOW_INT_in_atom308 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_ID_in_atom320 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_8_in_atom340 = new BitSet(new long[]{0x0000000000000130L});
